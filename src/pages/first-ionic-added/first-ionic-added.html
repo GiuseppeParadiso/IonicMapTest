@@ -1,0 +1,70 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Questo è il titolo della pagina</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding class="action-sheets-basic-page">
+  <button ion-button full (click)="openMenu($event)">
+    Visualizza una ActionSheet
+  </button>
+  <button ion-button round (click)="openBasicAlert()">
+    Apri un basic alert
+  </button>
+  <button ion-button outline type="button" (click)="radioAlertEvent()">
+    Attiva un radio alert button! -> {{selected}}
+  </button>
+  <button ion-button clear type="button" (click)="checkBoxAlertEvent()">
+    Attiva un checkbox alert button! -> {{selectedCheck}}
+  </button>
+  <ion-item>
+    <button ion-button round (click)="addFollower()" item-start>+</button>
+    <ion-icon name="logo-twitter" class="icon-item"></ion-icon>
+    Questo a destra è un badge
+    <ion-badge item-end>{{followers}}</ion-badge>
+  </ion-item>
+
+  <ion-list>
+    <ion-item>
+      Left Icon Button
+      <button ion-button outline item-end icon-left>
+        <ion-icon name="star"></ion-icon>
+        Left Icon
+      </button>
+    </ion-item>
+    <ion-item>
+      Il pulsante a destra porterà alla pagina di Hello-Ionic (inserita in push sul Nav)
+      <button ion-button outline item-end icon-right [navPush]="helloIonicPage">
+        Right Icon
+        <ion-icon name="bicycle"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-item>
+      <ion-card>
+        <img src="assets/imgs/facebook.png" class="card-image-dim"/>
+        <ion-card-content>
+          <ion-card-title>
+            Test per card con immagine in testa
+          </ion-card-title>
+          <p>
+            Questo è un test per la card con l'immagine di facebook
+          </p>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+    <ion-item>
+      <ion-card>
+        <img src="assets/imgs/colosseo.jpg" class="card-image-full" />
+        <div class="card-title" > Questo è il titolo della card a tutto schermo</div>
+        <div class="card-subtitle"> Questo è il sottotitolo della card a tutto schermo</div>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
+<ion-footer>Questo invece è il footer</ion-footer>

@@ -8,4 +8,8 @@ export class HelloIonicPage {
   constructor() {
 
   }
+
+  clickEvent(){
+    alert("clicked!");
+  }
 }

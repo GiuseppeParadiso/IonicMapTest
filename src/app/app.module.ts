@@ -9,29 +9,46 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { FirstIonicAddedPage } from '../pages/first-ionic-added/first-ionic-added';
+import { TestPage } from '../pages/test/test';
 
+import { GoogleMaps} from "@ionic-native/google-maps";
+import { MarkerService } from '../services/marker-service';
+import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ListPage, 
+    FirstIonicAddedPage,
+    TestPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    HttpModule,
+    IonicModule.forRoot(MyApp, {
+      statusbarPadding: true,
+     },{
+    links: [
+      { component: FirstIonicAddedPage, name: 'ActionSheetBasicPage', segment: 'action-sheet-basic' }
+    ]})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HelloIonicPage,
     ItemDetailsPage,
-    ListPage
+    ListPage,
+    FirstIonicAddedPage,
+    TestPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    MarkerService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GoogleMaps
   ]
 })
 export class AppModule {}
