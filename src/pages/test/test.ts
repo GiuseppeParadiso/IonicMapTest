@@ -15,7 +15,8 @@ export class TestPage {
   markerCounter: number = 0;
   markerList: MarkerOptions[] = [];
   markerCluster: any;
-
+  openedInfoWindow: CustomHtmlInfoWindow;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public markerService: MarkerService) {
   }
 
@@ -90,29 +91,29 @@ export class TestPage {
           ]
         });
         this.markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe(params => {
-          console.log("ONCLICK ON CLUSTER: param[1]=" + JSON.stringify(params[1]));
           let marker: Marker = params[1];
           let customInfoWindow = new CustomHtmlInfoWindow(marker, "");
           customInfoWindow.htmlInfo.open(marker);
         });
 
-/*         this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe((e) => {
-          let position = JSON.parse(e);
-          this.markerCounter++;
+        this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe((e) => {
+          this.openedInfoWindow.htmlInfo.close();
+          // let position = JSON.parse(e);
+          // this.markerCounter++;
 
-          let newMarker = {
-            name: "Marker" + this.markerCounter,
-            icon: 'red',
-            animation: 'DROP',
-            position: {
-              lat: position.lat,
-              lng: position.lng
-            }
-          };
-          this.markerCluster.addMarker(newMarker)
-          this.markerList.push(newMarker);
+          // let newMarker = {
+          //   name: "Marker" + this.markerCounter,
+          //   icon: 'red',
+          //   animation: 'DROP',
+          //   position: {
+          //     lat: position.lat,
+          //     lng: position.lng
+          //   }
+          // };
+          // this.markerCluster.addMarker(newMarker)
+          // this.markerList.push(newMarker);
         }); 
-*/
+
       });
 
   }
